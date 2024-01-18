@@ -10,28 +10,29 @@ NYCU Operation System aut 2023 Homework3
 * Open Operation (device_open):
 
 This function should check if the device is already open (to prevent multiple accesses) and set any initial state or protections needed.
-Example: Use a flag like Device_Open to track if the device is already in use. If it is, return an error; otherwise, set the flag and initialize as needed.
+Example: Use a flag like `Device_Open` to track if the device is already in use. If it is, return an error; otherwise, set the flag and initialize as needed.
 
 * Release Operation (device_release):
 
 This function is called when the device is closed. It should reset any state and remove protections set up in the open operation.
-Example: Reset the Device_Open flag and perform any necessary cleanup.
+Example: Reset the `Device_Open` flag and perform any necessary cleanup.
+
 ### Write Operation
 
 * Write Operation (device_write):
 This operation should accept a mask from the user, which determines the data returned by the read operation.
-Example: Define a global mask variable. In device_write, update this mask based on the user input.
+Example: Define a global `mask` variable. In `device_write`, update this mask based on the user input.
 
 ### Read Operation
 
 * Read Operation (device_read):
 
-This function should return data based on the current mask setting. The data includes a logo and various system information.
+This function should return data based on the current mask setting. The data includes a `logo` and various `system information`.
 The first line should always be the machine hostname.
 The second line is a separator, the length of which equals the hostname length.
 Subsequent lines depend on the mask, showing different system information like CPU model, memory, etc.
-Include functions to fetch each piece of information based on the mask.
-Handling the Logo:
+Include functions to fetch each piece of information based on the `mask`.
+Handling the `Logo`:
 ```
         .-.        
        (.. |       
@@ -41,12 +42,12 @@ Handling the Logo:
    |\\_)___/\)/\   
   <__)------(__/   
 ```
-Define a multi-line string array representing the logo.
-Include the logo lines in the output if specified by the mask.
+Define a multi-line string array representing the `logo`.
+Include the `logo` lines in the output if specified by the `mask`.
 
 ### Resource Management
-Ensure that resources like allocated memory, file descriptors, or major/minor numbers are released when the module is removed.
-This can be handled in the kfetch_mod_exit function.
+Ensure that resources like `allocated memory`, `file descriptors`, or major/minor numbers are released when the module is removed.
+This can be handled in the `kfetch_mod_exit` function.
 
 ### Optional Color Support
 Implementing color support would involve adding ANSI color codes to your output strings based on certain conditions or user settings.
